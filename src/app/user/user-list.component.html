@@ -1,0 +1,25 @@
+<div *ngIf="users$ | async; let users; else loading">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.FirstName}}</td>
+        <td>{{user.LastName}}</td>
+        <td>{{user.Email}}</td>
+        <td><a routerLink="{{'./' + user.Id}}" class="btn btn-primary btn-sm">Pokaż dane użytkownika</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #loading>
+  <div class="page-header">
+    <h1>Trwa ładowanie danych...</h1>
+  </div>
+</ng-template>

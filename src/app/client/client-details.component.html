@@ -1,0 +1,23 @@
+<div *ngIf="client$ | async; let client; else loading">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Dane o kliencie</h3>
+    </div>
+    <div class="panel-body">
+      <b>Imię i Nazwisko</b>: {{client.FirstName}} {{client.LastName}}
+      <br/>
+      <b>Nazwa firmy</b>: {{client.Company.Name}}
+      <br/>
+      <b>NIP firmy</b>: {{client.Company.NIP}}
+      <br/>
+      <b>Adres firmy</b>: {{client.Company.Address}}
+      <br/>
+    </div>
+  </div>
+  <a routerLink="../" class="btn btn-primary">powrót</a>
+</div>
+<ng-template #loading>
+  <div class="page-header">
+    <h1>Trwa ładowanie danych...</h1>
+  </div>
+</ng-template>

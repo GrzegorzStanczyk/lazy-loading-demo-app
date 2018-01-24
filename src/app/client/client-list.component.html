@@ -1,0 +1,30 @@
+<div *ngIf="clients$ | async; let clients; else loading">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Imię</th>
+          <th>Nazwisko</th>
+          <th>Nazwa firmy</th>
+          <th>NIP</th>
+          <th>Adres firmy</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{client.FirstName}}</td>
+          <td>{{client.LastName}}</td>
+          <td>{{client.Company.Name}}</td>
+          <td>{{client.Company.NIP}}</td>
+          <td>{{client.Company.Address}}</td>
+          <td><a routerLink="{{'./' + client.Id}}" class="btn btn-primary btn-sm">Pokaż dane klienta</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading>
+    <div class="page-header">
+      <h1>Trwa ładowanie danych...</h1>
+    </div>
+  </ng-template>
+  
